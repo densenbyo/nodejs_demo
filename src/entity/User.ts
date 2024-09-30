@@ -1,5 +1,6 @@
 // src/entity/User.ts
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {ToDo} from "./ToDo";
 
 @Entity()
 export class User {
@@ -11,4 +12,6 @@ export class User {
     password!: string;
     @Column()
     email!: string;
+    @OneToMany(() => ToDo, (todo) => todo.user, {cascade: true})
+    todos!: ToDo[];
 }
