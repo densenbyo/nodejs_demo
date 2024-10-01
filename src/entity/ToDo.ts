@@ -1,10 +1,10 @@
 // src/entity/ToDo.ts
 
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {User} from "./User";
 
-@Entity
-export class ToDo {
+@Entity()
+export class ToDo extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
     @Column()

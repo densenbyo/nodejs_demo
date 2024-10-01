@@ -22,10 +22,10 @@ export class UserService {
         return await this.userRepository.find({relations: ['todos']});
     }
 
-    public async findUserById(userId: number):Promise<User> {
-        const user = this.userRepository.findOneBy({id: userId});
+    public async findUserById(userId: number): Promise<User> {
+        const user = await this.userRepository.findOneBy({ id: userId });
         if (!user) {
-            throw new Error('User with id: ' + userId + ' is not found');
+            throw new Error(`User with id: ${userId} is not found`);
         }
 
         return user;

@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 // src/entity/User.ts
 const typeorm_1 = require("typeorm");
-let User = class User {
+const ToDo_1 = require("./ToDo");
+let User = class User extends typeorm_1.BaseEntity {
 };
 exports.User = User;
 __decorate([
@@ -31,6 +32,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => ToDo_1.ToDo, (todo) => todo.user, { cascade: true }),
+    __metadata("design:type", Array)
+], User.prototype, "todos", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);
